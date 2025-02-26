@@ -1,4 +1,6 @@
 <?php
+//Anusha Patel, Feb 26 2025, IT202 Section 006, Phase 1, ap3235@njit.edu
+
 require_once('database.php');
 $emailAddress = $_POST['emailAddress'];
 $password = $_POST['password'];

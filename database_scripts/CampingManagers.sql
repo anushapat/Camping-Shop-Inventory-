@@ -1,5 +1,7 @@
 -- Active: 1738266405254@@sql1.njit.edu@3306
 SHOW DATABASES;
+--//Anusha Patel, Feb 26 2025, IT202 Section 006, Phase 1, ap3235@njit.edu
+
 USE ap3235;
 CREATE TABLE CampingManagers (
  CampingManagerID     INT(11)        NOT NULL   AUTO_INCREMENT,
