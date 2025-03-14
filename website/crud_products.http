@@ -25,7 +25,9 @@ CampingProductID=16
 &CampingListPrice=0.00
 &CampingDateCreated=NOW();
 &CampingColor=Yellow
-###
+###///Anusha Patel, March 14 2025, IT202 Section 006, Phase 2, ap3235@njit.edu
+
+
 POST http://localhost:3000/removecampingproduct.test.php
 Content-Type: application/x-www-form-urlencoded
 

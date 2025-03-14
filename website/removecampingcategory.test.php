@@ -1,5 +1,7 @@
 <?php
 error_log("\$_POST " . print_r($_POST, true));
+///Anusha Patel, March 14 2025, IT202 Section 006, Phase 2, ap3235@njit.edu
+
 include("campingcategory.php");
 $CampingCategoryID=(int) $_POST['CampingCategoryID'];
 $category = Category::findCategory($CampingCategoryID);

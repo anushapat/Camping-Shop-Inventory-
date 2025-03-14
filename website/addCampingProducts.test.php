@@ -1,5 +1,7 @@
 <?php
 include("campingproduct.php");
+//Anusha Patel, March 14 2025, IT202 Section 006, Phase 2, ap3235@njit.edu
+
 $CampingProductID = (int) $_POST['CampingProductID'];
 if ((trim($CampingProductID) == '') or (!is_numeric($CampingProductID))) {
     echo gettype($CampingProductID);
@@ -35,3 +37,4 @@ if ((trim($CampingProductID) == '') or (!is_numeric($CampingProductID))) {
        echo "<h2>Sorry, there was a problem adding that item</h2>\n";
 }
 ?>
+//Anusha Patel, March 14 2025, IT202 Section 006, Phase 2, ap3235@njit.edu

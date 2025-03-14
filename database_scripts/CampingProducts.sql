@@ -1,4 +1,6 @@
 USE ap3235;
+--//Anusha Patel, March 14 2025, IT202 Section 006, Phase 2, ap3235@njit.edu
+
 CREATE TABLE CampingProducts (
 CampingProductID        INT(11)        NOT NULL,
 CampingProductCode      VARCHAR(10)    NOT NULL   UNIQUE,
