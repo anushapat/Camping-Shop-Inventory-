@@ -1,25 +1,28 @@
 POST http://localhost:3000/addcampingcategory.test.php
 Content-Type: application/x-www-form-urlencoded
 
-CampingCategoryID=2
-&CampingCategoryCode="dfks"
-&CampingCategoryName="ppp"
+CampingCategoryID=6
+&CampingCategoryCode=TEST
+&CampingCategoryName=This is created only for submission
 &DateCreated=NOW()
-&aisleNumber=5
-
-
-
+&aisleNumber=6
 
 ###
 GET http://localhost:3000/listcampingcategory.test.php
+
 ###
 POST http://localhost:3000/changecategory.test.php
 Content-Type: application/x-www-form-urlencoded
 
-CampingCategoryID=3
-&CampingCategoryCode="dfks"
-&CampingCategoryName="ppp"
+CampingCategoryID=6
+&CampingCategoryCode=TESTY
+&CampingCategoryName= TEST ONLY
 &DateCreated=NOW()
-&aisleNumber=7
+&aisleNumber=6
 
+###
+###
+POST http://localhost:3000/removecampingcategory.test.php
+Content-Type: application/x-www-form-urlencoded
 
+CampingCategoryID=6

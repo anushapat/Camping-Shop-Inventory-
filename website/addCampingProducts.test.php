@@ -1,6 +1,6 @@
 <?php
-include('campingproduct.php');
-$CampingProductID = $_POST['CampingProductID'];
+include("campingproduct.php");
+$CampingProductID = (int) $_POST['CampingProductID'];
 if ((trim($CampingProductID) == '') or (!is_numeric($CampingProductID))) {
     echo gettype($CampingProductID);
     echo "<h2>Sorry, you must enter a valid item ID number</h2>\n";
@@ -8,6 +8,14 @@ if ((trim($CampingProductID) == '') or (!is_numeric($CampingProductID))) {
    $CampingProductName = $_POST['CampingProductName'];
    $CampingCategoryID = $_POST['CampingCategoryID'];
    $CampingListPrice = $_POST['CampingListPrice'];
+//    $CampingProductID = $_POST['CampingProductCode'];
+   $CampingProductCode = $_POST['CampingProductCode'];
+   $CampingDescription = $_POST['CampingDescription'];
+   $CampingWholesalePrice = $_POST['CampingWholesalePrice'];
+   $CampingDateCreated = 'NOW()';
+   $CampingColor = $_POST['CampingColor'];
+
+
    $campingproduct = new CampingProduct(
     $CampingProductID,
     $CampingProductCode,
@@ -16,12 +24,13 @@ if ((trim($CampingProductID) == '') or (!is_numeric($CampingProductID))) {
     $CampingCategoryID,
     $CampingWholesalePrice,
     $CampingListPrice,
-    $CampingDateCreated
+    $CampingDateCreated,
+    $CampingColor
 
    );
-   $result = $campingproduct->saveCAmpingProduct();
+   $result = $campingproduct->saveCampingProduct();
    if ($result)
-       echo "<h2>New Item #$$CampingProductID) successfully added</h2>\n";
+       echo "<h2>New Item $CampingProductID) successfully added</h2>\n";
    else
        echo "<h2>Sorry, there was a problem adding that item</h2>\n";
 }

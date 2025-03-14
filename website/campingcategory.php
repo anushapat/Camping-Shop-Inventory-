@@ -28,7 +28,8 @@ function __construct ( $CampingCategoryID, $CampingCategoryCode, $CampingCategor
    function saveCategory()
    {
        $db = getDB();
-       $query = "INSERT INTO CampingCategories(CampingCategoryID,CampingCategoryCode,CampingCategoryName,aisleNumber,DateCreated) VALUES (?, ?, ?, ?, NOW())";
+       $query = "INSERT INTO CampingCategories(CampingCategoryID,CampingCategoryCode,CampingCategoryName,aisleNumber,DateCreated) 
+       VALUES (?, ?, ?, ?, NOW())";
        $stmt = $db->prepare($query);
        $stmt->bind_param(
            "issi",
@@ -80,7 +81,7 @@ function __construct ( $CampingCategoryID, $CampingCategoryCode, $CampingCategor
                $row['DateCreated'],
                $row['aisleNumber']
            );
-        echo("this function works");
+       echo("this function works");
            $db->close();
            return $category;
        } else {
@@ -91,16 +92,19 @@ function __construct ( $CampingCategoryID, $CampingCategoryCode, $CampingCategor
    function updateCategory()
    {
        $db = getDB();
-       $query = "UPDATE CampingCategories SET CampingCategoryID = ?, CampingCategoryCode = ?, " .
-           "CampingCategoryName = ? " .
-           "WHERE CampingCategoryID = $this->CampingCategoryID";
-       $stmt = $db->prepare($query);
+       $query = "UPDATE CampingCategories 
+          SET CampingCategoryCode = ?, 
+              CampingCategoryName = ?, 
+              aisleNumber = ? 
+          WHERE CampingCategoryID = ?";
+$stmt = $db->prepare($query);
+
        $stmt->bind_param(
-           "issi",
-           $this->CampingCategoryID,
+           "ssii",
            $this->CampingCategoryCode,
            $this->CampingCategoryName,
-        $this->aisleNumber
+        $this->aisleNumber,
+        $this->CampingCategoryID
        );
        $result = $stmt->execute();
        $db->close();

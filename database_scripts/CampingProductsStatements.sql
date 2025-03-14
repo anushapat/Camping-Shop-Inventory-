@@ -25,5 +25,3 @@ INSERT into CampingProducts
 (CampingProductID, CampingProductCode, CampingProductName,CampingDescription,CampingCategoryID,CampingWholesalePrice,CampingListPrice,CampingColor,DateCreated)
 VALUES
 (3,'KBAG','Kid Sleeping Bag', 'A sleeping bag that is small and fits the needs of a kid. It is important for bags to fit the kid because then it can effectively heat up the area', 1, 5.00,10.00, 'Pink', Now() );
-
-SELECT * FROM CampingProducts;

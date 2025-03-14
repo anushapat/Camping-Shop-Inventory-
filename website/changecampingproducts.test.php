@@ -1,15 +1,28 @@
 <?php
 include("campingproduct.php");
-$CampingCategoryID = $_POST['CampingCategoryID'];
-$CampingProduct = CampingProduct::findCampingProduct($CampingCategoryID);
-$item->CampingProductID = $_POST['CampingProductID'];
-$item->CampingProductName = $_POST['CampingProductName'];
-$item->CampingCategoryID = $_POST['CampingCategoryID'];
-$item->CampingListPrice = $_POST['CampingListPrice'];
+$CampingProductID = (int)$_POST['CampingProductID'];
+$CampingProduct = CampingProduct::findCampingProduct($CampingProductID);
+if($CampingProduct){
+
+
+$CampingProduct->CampingProductName = $_POST['CampingProductName'];
+$CampingProduct->CampingCategoryID = $_POST['CampingCategoryID'];
+$CampingProduct->CampingListPrice = $_POST['CampingListPrice'];
+$CampingProduct->CampingProductCode = $_POST['CampingProductCode'];
+$CampingProduct ->CampingDescription = $_POST['CampingDescription'];
+$CampingProduct ->CampingWholesalePrice = $_POST['CampingWholesalePrice'];
+$CampingProduct ->CampingDateCreated = 'NOW()';
+$CampingProduct-> CampingColor = $_POST['CampingColor'];
+
+
+
 $result = $CampingProduct->updateCampingProduct();
+
+
+}
 if ($result) {
-   echo "<h2>Item $CampingCategoryID updated</h2>\n";
+   echo "<h2>Item $CampingProductID updated</h2>\n";
 } else {
-   echo "<h2>Problem updating item $CampingCategoryID</h2>\n";
+   echo "<h2>Problem updating item $CampingProductID</h2>\n";
 }
 ?>

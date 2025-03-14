@@ -1,7 +1,9 @@
 <?php
 require_once('database.php');
 class CampingProduct
+
 {
+
    public $CampingProductID;
    public $CampingProductCode;
    public $CampingProductName;
@@ -10,6 +12,8 @@ class CampingProduct
    public $CampingWholesalePrice;
    public $CampingListPrice;
    public $CampingDateCreated;
+   public $CampingColor;
+
 
    function __construct(
      $CampingProductID,
@@ -19,7 +23,8 @@ class CampingProduct
      $CampingCategoryID,
      $CampingWholesalePrice,
      $CampingListPrice,
-     $CampingDateCreated
+     $CampingDateCreated,
+     $CampingColor
 
        ) {
        $this->CampingProductID = $CampingProductID;
@@ -30,11 +35,15 @@ class CampingProduct
        $this->CampingWholesalePrice = $CampingWholesalePrice;
        $this->CampingListPrice = $CampingListPrice;
        $this->CampingDateCreated = $CampingDateCreated;
+       $this->CampingColor = $CampingColor;
+
+
 
   
     }
    function __toString()
    {
+
        $output = "<h2>Item : $this->CampingProductID</h2>" .
            "<h2>Name: $this->CampingProductName</h2>\n";
        "<h2>Category ID: $this->CampingCategoryID at $this->CampingListPrice</h2>\n";
@@ -42,11 +51,13 @@ class CampingProduct
    }
    function saveCampingProduct()
    {
+
        $db = getDB();
-       $query = "INSERT INTO CampingProducts VALUES (?, ?, ?, ?,?, ?, ?, ?)";
+       $query = "INSERT INTO CampingProducts(CampingProductID,CampingProductCode,CampingProductName,CampingDescription,CampingCategoryID,CampingWholesalePrice,CampingListPrice,DateCreated,CampingColor)
+        VALUES (?, ?, ?, ?,?, ?, ?, NOW(), ?)";
        $stmt = $db->prepare($query);
        $stmt->bind_param(
-          "iisstiiis",
+          "isssidds",
            $this->CampingProductID,
            $this->CampingProductCode,
            $this->CampingProductName,
@@ -54,9 +65,8 @@ class CampingProduct
            $this->CampingCategoryID,
            $this->CampingWholesalePrice,
            $this->CampingListPrice,
-           $this->CampingDateCreated,
+           $this->CampingColor
        );
-    //    echo $stmt;
        $result = $stmt->execute();
        $db->close();
        return $result;
@@ -77,7 +87,8 @@ class CampingProduct
                    $row['CampingCategoryID'],
                    $row['CampingWholesalePrice'],
                    $row['CampingListPrice'],
-                   $row['CampingDateCreated'],
+                   $row['DateCreated'],
+                   $row['CampingColor']
                  
                );
                array_push($CampingProducts, $CampingProduct);
@@ -105,7 +116,8 @@ class CampingProduct
             $row['CampingCategoryID'],
             $row['CampingWholesalePrice'],
             $row['CampingListPrice'],
-            $row['CampingDateCreated'],
+            $row['DateCreated'],
+            $row['CampingColor']
            );
            $db->close();
            return $CampingProduct;

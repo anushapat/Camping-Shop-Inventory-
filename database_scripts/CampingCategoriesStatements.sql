@@ -18,4 +18,4 @@ INSERT INTO CampingCategories
  VALUES
  (2, 'COOK', 'Cooking Essentials', NOW(),2);
 
- SELECT * FROM CampingCategories
+ SELECT * From CampingCategories;

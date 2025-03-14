@@ -1,24 +1,33 @@
 POST http://localhost:3000/addCampingProducts.test.php
 Content-Type: application/x-www-form-urlencoded
 
-
-CampingProductID=5
-&CampingProductName="TEST"
-&CampingCategoryID=15
-&CampingListPrice=10.0
+CampingProductID=16
+&CampingProductCode=Test
+&CampingProductName= This is for the submission
+&CampingDescription= Please disregard this. it is not related to camping. it is only for testing
+&CampingCategoryID=6
+&CampingWholesalePrice=45.00
+&CampingListPrice=90.00
+&CampingDateCreated=NOW();
+&CampingColor=Silver
 ###
 GET http://localhost:3000/listcampingproducts.test.php
-POST http://localhost:3000/changeitem.test.php
+###
+POST http://localhost:3000/changecampingproducts.test.php
 Content-Type: application/x-www-form-urlencoded
 
-
-CampingProductID=5
-&CampingProductName="TEST"
-&CampingCategoryID=15
-&CampingListPrice=10.0
+CampingProductID=16
+&CampingProductCode=TESTTYT
+&CampingProductName= Submission Test
+&CampingDescription= Please disregard this. it is not related to camping. it is only for testing
+&CampingCategoryID=9    
+&CampingWholesalePrice=5.00
+&CampingListPrice=0.00
+&CampingDateCreated=NOW();
+&CampingColor=Yellow
 ###
 POST http://localhost:3000/removecampingproduct.test.php
 Content-Type: application/x-www-form-urlencoded
 
+CampingProductID=16
 
-itemID=5
