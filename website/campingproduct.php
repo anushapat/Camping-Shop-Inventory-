@@ -154,33 +154,36 @@ function removeCampingProduct()
        return $result;
    }
 
-//    static function getCampingProductsByCategory($CampingProductID)
-//    {
-//        $db = getDB();
-//        $query = "SELECT * from CampingProducts where categoryID = $CampingProductID";
-//        $result = $db->query($query);
-//        if (mysqli_num_rows($result) > 0) {
-//            $CampingProducts = array();
-//            while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
-//                $CampingProducts = new CampingProducts(
-//                 $row['CampingProductID'],
-//                 $row['CampingProductCode'],
-//                 $row['CampingDescription'],
-//             $row['listPrice'],
-//             $row['CampingCategoryID'],
-//             $row['CampingWholesalePrice'],
-//             $row['CampingListPrice'],
-//             $row['CampingDateCreated']
-//                );
-//                array_push($CampingProducts, $CampingProducts);
-//            }
-//            $db->close();
-//            return $CampingProducts;
-//        } else {
-//            $db->close();
-//            return NULL;
-//        }
-//    }
+   static function getCampingProductsbyCampingCategory($CampingCategoryID)
+   {
+       $db = getDB();
+       $query = "SELECT * from CampingProducts where CampingCategoryID = $CampingCategoryID";
+       $result = $db->query($query);
+       if (mysqli_num_rows($result) > 0) {
+           $CampingProduct = array();
+           $CampingProducts = array();
+           while ($row = $result->fetch_array(MYSQLI_ASSOC)) {
+               $CampingProduct = new CampingProduct(
+                $row['CampingProductID'],
+                $row['CampingProductCode'],
+                $row['CampingProductName'],
+                $row['CampingDescription'],
+                $row['CampingCategoryID'],
+                $row['CampingWholesalePrice'],
+                $row['CampingListPrice'],
+                $row['DateCreated'],
+                $row['CampingColor']
+               );
+               array_push($CampingProducts, $CampingProduct);
+           }
+           $db->close();
+           return $CampingProducts;
+       } else {
+           $db->close();
+           return NULL;
+       }
+   }
+
 
 
 

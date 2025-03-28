@@ -1,5 +1,6 @@
 <?php
-include("campingproduct.php");
+// include('item.php');
+if (isset($_SESSION['login'])) {
 //Anusha Patel, March 14 2025, IT202 Section 006, Phase 2, ap3235@njit.edu
 
 $CampingProductID = (int) $_POST['CampingProductID'];
@@ -16,7 +17,9 @@ if ((trim($CampingProductID) == '') or (!is_numeric($CampingProductID))) {
    $CampingWholesalePrice = $_POST['CampingWholesalePrice'];
    $CampingDateCreated = 'NOW()';
    $CampingColor = $_POST['CampingColor'];
+}
 
+ 
 
    $campingproduct = new CampingProduct(
     $CampingProductID,
@@ -35,6 +38,9 @@ if ((trim($CampingProductID) == '') or (!is_numeric($CampingProductID))) {
        echo "<h2>New Item $CampingProductID) successfully added</h2>\n";
    else
        echo "<h2>Sorry, there was a problem adding that item</h2>\n";
-}
+
+    } else {
+        echo "<h2>Please login first</h2>\n";
+     }
 ?>
 //Anusha Patel, March 14 2025, IT202 Section 006, Phase 2, ap3235@njit.edu
