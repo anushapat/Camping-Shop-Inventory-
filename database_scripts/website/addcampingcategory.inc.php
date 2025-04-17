@@ -2,13 +2,14 @@
 // include("category.php");
 if (isset($_SESSION['login'])) {
 ///Anusha Patel, March 14 2025, IT202 Section 006, Phase 2, ap3235@njit.edu
+//$CampingCategoryID =filter_input((int) $_POST['CampingCategoryID']);
+$CampingCategoryID = filter_input(INPUT_POST, 'CampingCategoryID', FILTER_VALIDATE_INT);
 
-$CampingCategoryID =(int) $_POST['CampingCategoryID'];
-if ((trim($CampingCategoryID) == '') or (!is_numeric($CampingCategoryID))) {
+if ((trim($CampingCategoryID) == '') or (!is_int($CampingCategoryID))) {
   echo "<h2>Sorry, you must enter a valid category ID number</h2>\n";
 } else {
-  $CampingCategoryCode = $_POST['CampingCategoryCode'];
-  $CampingCategoryName = $_POST['CampingCategoryName'];
+  $CampingCategoryCode = htmlspecialchars( $_POST['CampingCategoryCode']);
+  $CampingCategoryName =htmlspecialchars( $_POST['CampingCategoryName']);
  $DateCreated = 'NOW()';
  $aisleNumber = $_POST['aisleNumber'];
  

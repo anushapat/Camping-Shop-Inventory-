@@ -2,25 +2,22 @@
 // include('item.php');
 if (isset($_SESSION['login'])) {
 //Anusha Patel, March 14 2025, IT202 Section 006, Phase 2, ap3235@njit.edu
-
-$CampingProductID = (int) $_POST['CampingProductID'];
-if ((trim($CampingProductID) == '') or (!is_numeric($CampingProductID))) {
+$CampingProductID = filter_input(INPUT_POST, 'CampingProductID', FILTER_VALIDATE_INT);
+if ((trim($CampingProductID) == '') or (!is_int($CampingProductID))) {
     echo gettype($CampingProductID);
     echo "<h2>Sorry, you must enter a valid item ID number</h2>\n";
 } else {
-   $CampingProductName = $_POST['CampingProductName'];
-   $CampingCategoryID = $_POST['CampingCategoryID'];
-   $CampingListPrice = $_POST['CampingListPrice'];
+   $CampingProductCode = htmlspecialchars( $_POST['CampingProductCode']);
+   $CampingProductName = htmlspecialchars($_POST['CampingProductName']);
+   $CampingCategoryID = htmlspecialchars($_POST['CampingCategoryID']);
+   $CampingListPrice = htmlspecialchars($_POST['CampingListPrice']);
 //    $CampingProductID = $_POST['CampingProductCode'];
-   $CampingProductCode = $_POST['CampingProductCode'];
-   $CampingDescription = $_POST['CampingDescription'];
-   $CampingWholesalePrice = $_POST['CampingWholesalePrice'];
+  // $CampingProductCode = htmlspecialchars($_POST['CampingProductCode']);
+   $CampingDescription = htmlspecialchars($_POST['CampingDescription']);
+   $CampingWholesalePrice = htmlspecialchars($_POST['CampingWholesalePrice']);
    $CampingDateCreated = 'NOW()';
-   $CampingColor = $_POST['CampingColor'];
+   $CampingColor = htmlspecialchars($_POST['CampingColor']);
 }
-
- 
-
    $campingproduct = new CampingProduct(
     $CampingProductID,
     $CampingProductCode,

@@ -5,7 +5,7 @@ if (!isset($_POST['CampingProductID']) or (!is_numeric($_POST['CampingProductID'
    <a href="index.php?content=listcampingproducts">List Products</a>
    <?php
 } else {
-   $CampingProductID = $_POST['CampingProductID'];
+   $CampingProductID = htmlspecialchars( $_POST['CampingProductID']);
    $CampingProduct = CampingProduct::findCampingProduct($CampingProductID);
    if ($CampingProduct) {
    ?>

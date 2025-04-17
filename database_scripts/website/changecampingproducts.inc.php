@@ -11,14 +11,14 @@ if($CampingProduct){
 //Anusha Patel, March 14 2025, IT202 Section 006, Phase 2, ap3235@njit.edu
 
 
-$CampingProduct->CampingProductName = $_POST['CampingProductName'];
-$CampingProduct->CampingCategoryID = $_POST['CampingCategoryID'];
-$CampingProduct->CampingListPrice = $_POST['CampingListPrice'];
-$CampingProduct->CampingProductCode = $_POST['CampingProductCode'];
-$CampingProduct ->CampingDescription = $_POST['CampingDescription'];
-$CampingProduct ->CampingWholesalePrice = $_POST['CampingWholesalePrice'];
+$CampingProduct->CampingProductName = htmlspecialchars($_POST['CampingProductName']);
+$CampingProduct->CampingCategoryID = htmlspecialchars($_POST['CampingCategoryID']);
+$CampingProduct->CampingListPrice =htmlspecialchars ($_POST['CampingListPrice']);
+$CampingProduct->CampingProductCode = htmlspecialchars($_POST['CampingProductCode']);
+$CampingProduct ->CampingDescription = htmlspecialchars($_POST['CampingDescription']);
+$CampingProduct ->CampingWholesalePrice = htmlspecialchars($_POST['CampingWholesalePrice']);
 $CampingProduct ->CampingDateCreated = 'NOW()';
-$CampingProduct-> CampingColor = $_POST['CampingColor'];
+$CampingProduct-> CampingColor =htmlspecialchars( $_POST['CampingColor']);
 
 $result = $CampingProduct->updateCampingProduct();
 

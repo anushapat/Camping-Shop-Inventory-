@@ -2,8 +2,10 @@
 //Anusha Patel, Feb 26 2025, IT202 Section 006, Phase 1, ap3235@njit.edu
 
 require_once('database.php');
-$emailAddress = $_POST['emailAddress'];
+$emailAddress = htmlspecialchars( $_POST['emailAddress']);
 $password = $_POST['password'];
+if (filter_var($emailAddress, FILTER_VALIDATE_EMAIL)) {
+
 $query = "SELECT firstName, lastName, pronouns FROM CampingManagers " .
         "WHERE emailAddress = ? AND password = SHA2(?,256)";
 $db = getDB();
@@ -27,11 +29,14 @@ if ($fetched && isset($name)) {
 
 
 
-   
-
    header("Location: index.php");
 } else {
    echo "<h2>Sorry, login incorrect for Camping Store</h2>\n";
    echo "<a href=\"index.php\">Please try again</a>\n";
 }
+} else {
+   echo "<h2>Please enter a valid email address</h2>\n";
+   echo "<a href=\"index.php\">Please try again</a>\n";
+}
+
 ?>
