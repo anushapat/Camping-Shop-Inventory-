@@ -4,7 +4,6 @@ if (isset($_SESSION['login'])) {
 ///Anusha Patel, March 14 2025, IT202 Section 006, Phase 2, ap3235@njit.edu
 //$CampingCategoryID =filter_input((int) $_POST['CampingCategoryID']);
 $CampingCategoryID = filter_input(INPUT_POST, 'CampingCategoryID', FILTER_VALIDATE_INT);
-
 if ((trim($CampingCategoryID) == '') or (!is_int($CampingCategoryID))) {
   echo "<h2>Sorry, you must enter a valid category ID number</h2>\n";
 } else {
