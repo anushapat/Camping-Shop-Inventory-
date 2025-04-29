@@ -183,7 +183,30 @@ function removeCampingProduct()
            return NULL;
        }
    }
+   static function getTotalItems()
+   {
+    $db = getDB();
+    $query = "SELECT COUNT(CampingProductID) from CampingProducts";
+    $result = $db->query($query);
+    $row = $result->fetch_array();
+    if ($row) {
+        return $row[0];
+    } else {
+        return NULL;
+    }
+ }
 
+   static function getTotalListPrice()
+   {
+    $db = getDB();
+    $query = "SELECT SUM(CampingListPrice) from CampingProducts";
+    $result = $db->query($query);
+    $row = $result->fetch_array();
+    if ($row) {
+        return $row[0];
+    } else {
+        return NULL;
+    }   }
 
 
 

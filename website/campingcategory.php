@@ -120,7 +120,18 @@ $stmt = $db->prepare($query);
        $db->close();
        return $result;
    }
-
+   static function getTotalCategories()
+   {
+      $db = getDB();
+      $query = "SELECT COUNT(CampingCategoryID) FROM CampingCategories";
+      $result = $db->query($query);
+      $row = $result->fetch_array();
+      if ($row) {
+          return $row[0];
+      } else {
+          return NULL;
+      }
+}
 
 
 
